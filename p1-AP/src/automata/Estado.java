@@ -19,11 +19,20 @@ public class Estado {
 		setNombre(n);
 	}
 	
+	public Estado() {
+		setNombre(new String(""));
+	}
+	
 	public void setNombre (String n) {
 		nombre = n;
 	}
 	
 	public String getNombre () {
+		return nombre;
+	}
+
+	@Override
+	public String toString() {
 		return nombre;
 	}
 
