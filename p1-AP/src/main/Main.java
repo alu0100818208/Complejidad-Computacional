@@ -9,7 +9,6 @@ public class Main {
 	public static void main(String[] args) {
 		
 		try {
-			System.out.println("Uno");
 			Automata ap = new Automata(args[0]);
 			ap.getInicialS();
 		} catch (Exception e) {

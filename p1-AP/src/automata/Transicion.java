@@ -12,7 +12,7 @@ package automata;
 
 import java.util.ArrayList;
 
-public class Trancision {
+public class Transicion {
    
 	private Estado origen;		// Estado de partida de la trancisiÃ³n
 	private Estado destino;		// Estado de destino de la trancisiÃ³n
@@ -22,7 +22,7 @@ public class Trancision {
 	private ArrayList<String> sustPila;			// Elemento/s que pondremos en la pila
 	
 	// Construimos la trancisiÃ³n
-	public Trancision (Estado q1, String a, String ap1, Estado q2, ArrayList<String> ap2) {		//Î´(q1, a1, A1) = (q2, A2)
+	public Transicion (Estado q1, String a, String ap1, Estado q2, ArrayList<String> ap2) {		//Î´(q1, a1, A1) = (q2, A2)
 		
 		setOrigen (q1);
 		setDestino (q2);

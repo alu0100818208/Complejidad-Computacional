@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 import automata.Automata;
 import automata.Estado;
-import automata.Trancision;
+import automata.Transicion;
 
 public class Conversor {
 
@@ -24,6 +24,9 @@ public class Conversor {
 	public Conversor (String nombreArchivo) throws IOException {
 		
 		ap = new Automata();
+		
+		ArrayList<String> epsilon = new ArrayList<String>();
+		epsilon.add(".");
 		
 		// Si el  archivo no es de tipo automata a pila notificamos el error y cerramos el programa
 		if (!nombreArchivo.endsWith(".ap")) {
@@ -75,8 +78,12 @@ public class Conversor {
 		// La sexta línea corresponde con el conunto de estados de aceptación
 		dummy = lector.readLine();
 		spliter = dummy.split(" ");
-		for(int i = 0; i < spliter.length; i++) {
-			ap.addEstadoAcep(new Estado(spliter[i]));
+		if (!dummy.equals(".")) {
+			for(int i = 0; i < spliter.length; i++) {
+				ap.addEstadoAcep(new Estado(spliter[i]));
+			}
+		} else {
+			ap.setEstadosAcep(new ArrayList<Estado>());
 		}
 		
 		// El resto de líneas son trancisiones
@@ -89,7 +96,7 @@ public class Conversor {
 			for(int i = 4; i < spliter.length; i++) {
 				auxString.add(spliter[i]);
 			}
-			ap.addTrancision(new Trancision(new Estado(spliter[0]), spliter[1], spliter[2], new Estado(spliter[3]), auxString));
+			ap.addTrancision(new Transicion(new Estado(spliter[0]), spliter[1], spliter[2], new Estado(spliter[3]), auxString));
 		}
 		
 		// Cerramos el fichero para evitar erroes y sobreescrituras

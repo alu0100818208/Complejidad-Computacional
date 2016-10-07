@@ -36,4 +36,12 @@ public class Estado {
 		return nombre;
 	}
 
+	public boolean equals(Estado obj) {
+		if(nombre.equals(obj.getNombre())) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }
