@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class Cinta {
 
-	static final int TAMCINTA = 3;			// Constante con tamaño de la cinta por los lados además del contenido
+	static final int TAMCINTA = 1;			// Constante con tamaño de la cinta por los lados además del contenido
 	
 	private ArrayList<String> cinta;
 	private int cabeza;						// Posición cabeza lectora

@@ -101,17 +101,22 @@ public class MaquinaTuring {
 			
 			if(pertenece()) {
 				System.out.println("La cadena introducida pertenece al lenguaje.");
-				System.out.println("Cinta:\n" + cinta + "\n");
+				System.out.println("Cinta:\n");
+				for(int i = 0; i < cinta.size(); i++) {
+					System.out.println(cinta.get(i));
+				}
 			} else {
 				System.out.println("La cadena introducida no pertenece al lenguaje.");
-				System.out.println("Cinta:\n" + cinta + "\n");
+				System.out.println("Cinta:\n");
+				for(int i = 0; i < cinta.size(); i++) {
+					System.out.println(cinta.get(i));
+				}
 			}
 				
 			System.out.println("¿Quieres introducir una nueva cadena?[Y/N]");
 			cadena = lectorPant.readLine();
 			if(!cadena.toLowerCase().equals("y")) {
 				continuar = false;
-				System.out.println("Adios y gracias por usar el software :).");
 			}
 			
 		}
@@ -347,7 +352,7 @@ public class MaquinaTuring {
 	@Override
 	public String toString() {
 		return "\n*****Maquina de Turing*****\n\nConjuntoQ = " + conjuntoQ + "\nAlfabetoE = " + alfabetoE + "\nAlfabetoC = " + alfabetoC
-				+ "\nEstado inicial = " + inicial + "\nSímbolo blanco = " + blanco + "\nEstados de Aceptación = " + estadosAcep + "\nFunción de Transición = "
+				+ "\nEstado inicial = " + inicial + "\nSímbolo blanco = " + blanco + "\nEstados de Aceptación = " + estadosAcep + "\nFunción de Transición = \n"
 				+ funcTransicion;
 	}
 	
