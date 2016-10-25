@@ -36,6 +36,7 @@ public class MaquinaTuring {
 		this.blanco = new String();
 		this.estadosAcep = new ArrayList<Estado>();
 		this.funcTransicion = new ArrayList<Transicion>();
+		nCintas = 0;
 	}
 	
 	// Constructor que utiliza un fichero como método para crear la Máquina
@@ -49,6 +50,7 @@ public class MaquinaTuring {
 		this.blanco = aux.getMt().getBlanco();
 		this.estadosAcep = aux.getMt().getEstadosAcep();
 		this.funcTransicion = aux.getMt().getFuncTransicion();
+		this.nCintas = aux.getMt().getNCintas();
 		// Nos aseguramos que la máquina no tenga errores
 		erroresMaquina();
 		
@@ -65,6 +67,7 @@ public class MaquinaTuring {
 		this.blanco = aux.getMt().getBlanco();
 		this.estadosAcep = aux.getMt().getEstadosAcep();
 		this.funcTransicion = aux.getMt().getFuncTransicion();
+		this.nCintas = aux.getMt().getNCintas();
 		// Nos aseguramos que la máquina no tenga errores
 		erroresMaquina();
 		
@@ -83,9 +86,11 @@ public class MaquinaTuring {
 		// En esta parte introducimos la cadena a evaluar
 		while(continuar) {
 			
+			cinta = new ArrayList<Cinta>();
 			System.out.println("Por favor, introduzca una cadena a evaluar.");
 			cadena = lectorPant.readLine();
 			Cinta aux = new Cinta(cadena, blanco);
+			cinta.add(aux);
 			// Si hay más de una cinta el resto serán cintas vacias
 			if(getNCintas() > 1) {
 				for (int i = 1; i < getNCintas(); i++) {
@@ -96,8 +101,10 @@ public class MaquinaTuring {
 			
 			if(pertenece()) {
 				System.out.println("La cadena introducida pertenece al lenguaje.");
+				System.out.println("Cinta:\n" + cinta + "\n");
 			} else {
 				System.out.println("La cadena introducida no pertenece al lenguaje.");
+				System.out.println("Cinta:\n" + cinta + "\n");
 			}
 				
 			System.out.println("¿Quieres introducir una nueva cadena?[Y/N]");
@@ -111,13 +118,14 @@ public class MaquinaTuring {
 		lectorPant.close();
 	}
 	
-	boolean pertenece () {
+	public boolean pertenece () {
 		
 		Estado actual = inicial;
 		ArrayList<String> eltoCinta = new ArrayList<String>();
-		Transicion auxTran;
+		Transicion auxTran = new Transicion();
+		boolean dummy = true;
 		
-		while(true) {
+		while(dummy) {
 			
 			for(int i = 0; i < nCintas; i++) {
 				eltoCinta.add(cinta.get(i).getCinta().get(cinta.get(i).getCabeza()));
@@ -129,6 +137,7 @@ public class MaquinaTuring {
 			} else {
 				actual = transitar(auxTran);
 			}
+			eltoCinta = new ArrayList<String>();
 		}
 		
 		if(this.estadosAcep.contains(actual)) {
@@ -142,25 +151,18 @@ public class MaquinaTuring {
 	public Transicion buscarTran(Estado estadoActual, ArrayList<String> eltosCinta) {
 		
 		String aux = new String();
+		
+		for(int j = 0; j < nCintas; j++) {
+			aux = aux + eltosCinta.get(j);
+		}
+		
 		for(int i = 0; i < funcTransicion.size(); i++) {
-			if(nCintas > 1) {
-				
-				for(int j = 0; j < nCintas; j++) {
-					aux = aux + eltosCinta.get(j);
-				}
-				
-				if(funcTransicion.get(i).getOrigen().equals(estadoActual)
-						&& funcTransicion.get(i).getEntrada().equals(aux)) {
-					return funcTransicion.get(i);
-				}
-				
-			} else {
-				if(funcTransicion.get(i).getOrigen().equals(estadoActual)
-						&& funcTransicion.get(i).getEntrada().equals(eltosCinta.get(0))) {
-					
-					return funcTransicion.get(i);
-				}
+			
+			if(funcTransicion.get(i).getOrigen().equals(estadoActual)
+					&& funcTransicion.get(i).getEntrada().equals(aux)) {
+				return funcTransicion.get(i);
 			}
+				
 		}
 		
 		return null;

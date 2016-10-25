@@ -13,13 +13,13 @@ public class Main {
 		MaquinaTuring mt;
 		try {
 			mt = new MaquinaTuring(args[0]);
+			System.out.println(mt + "\n");
 			mt.interaccion();
-			System.out.println(mt);
 			
 		} catch (Exception e) {
-			/*mt = new MaquinaTuring(0);
-			System.out.println(mt);
-			mt.interaccion();*/
+			mt = new MaquinaTuring(0);
+			System.out.println(mt + "\n");
+			mt.interaccion();
 		}
 
 	}

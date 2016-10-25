@@ -20,6 +20,14 @@ public class Transicion {
 	private String entrada;							// Elemento/s de la/s cinta/s. 
 	private ArrayList<Movimiento> sustCintas;		// Elementos que pondremos en la cinta y el movimiento que se tendrá que hacer.
 	
+	public Transicion() {
+
+		this.origen = new Estado();
+		this.destino = new Estado();
+		this.entrada = new String();
+		this.sustCintas = new ArrayList<Movimiento>();
+	}
+	
 	// Construimos la trancisiÃ³n
 	public Transicion (Estado q1, String a, Estado q2, ArrayList<Movimiento> m) {		//(q1, a1, ab) = (q2, (., L), (., S), ...)
 		

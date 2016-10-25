@@ -95,6 +95,8 @@ public class Conversor {
 					
 				}
 				
+				mt.addTrancision(new Transicion(new Estado (spliter[0]), spliter[1], new Estado(spliter[2]), movement));
+				
 			} else {
 				
 				mt.setNCintas(1);
