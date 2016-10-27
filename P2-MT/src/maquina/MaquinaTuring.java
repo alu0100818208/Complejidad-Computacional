@@ -101,15 +101,15 @@ public class MaquinaTuring {
 			
 			if(pertenece()) {
 				System.out.println("La cadena introducida pertenece al lenguaje.");
-				System.out.println("Cinta:\n");
 				for(int i = 0; i < cinta.size(); i++) {
-					System.out.println(cinta.get(i));
+					System.out.println("Cinta " + (i + 1) + ":");
+					System.out.println(cinta.get(i) + "\n");
 				}
 			} else {
 				System.out.println("La cadena introducida no pertenece al lenguaje.");
-				System.out.println("Cinta:\n");
 				for(int i = 0; i < cinta.size(); i++) {
-					System.out.println(cinta.get(i));
+					System.out.println("Cinta " + (i + 1) + ":");
+					System.out.println(cinta.get(i) + "\n");
 				}
 			}
 				
@@ -351,9 +351,12 @@ public class MaquinaTuring {
 
 	@Override
 	public String toString() {
-		return "\n*****Maquina de Turing*****\n\nConjuntoQ = " + conjuntoQ + "\nAlfabetoE = " + alfabetoE + "\nAlfabetoC = " + alfabetoC
-				+ "\nEstado inicial = " + inicial + "\nSímbolo blanco = " + blanco + "\nEstados de Aceptación = " + estadosAcep + "\nFunción de Transición = \n"
-				+ funcTransicion;
+		String out = "\n*****Maquina de Turing*****\n\nConjuntoQ = " + conjuntoQ + "\nAlfabetoE = " + alfabetoE + "\nAlfabetoC = " + alfabetoC
+				+ "\nEstado inicial = " + inicial + "\nSímbolo blanco = " + blanco + "\nEstados de Aceptación = " + estadosAcep + "\nFunción de Transición = \n";
+		for(int i = 0; i < funcTransicion.size(); i++) {
+			out = out + funcTransicion.get(i) + "\n";
+		}
+		return out;
 	}
 	
 	

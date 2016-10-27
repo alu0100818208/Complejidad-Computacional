@@ -1,5 +1,5 @@
 /**
- * Esta clase implementa un conversor de fichero .mt a un objeto MáquinaTurnig o la entrada del usuario
+ * Esta clase implementa un conversor de fichero .mt o la entrada del usuario a un objeto MáquinaTurnig
  * al objeto MaquinaTuring
  * @author: Ã�ngel David MartÃ­n RodrÃ­guez
  * @email: alu0100818208@ull.edu.es
